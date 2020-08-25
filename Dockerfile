@@ -1,6 +1,7 @@
 FROM debian:buster
 
 # Credit for all this code goes to @eddelbuettel (https://github.com/rocker-org/rocker/blob/master/r-base/latest/Dockerfile)
+# I only remove'd the "Use Debian unstable via pinning" section
 LABEL org.label-schema.license="GPL-2.0" \
       org.label-schema.vcs-url="https://github.com/rocker-org/r-base" \
       org.label-schema.vendor="Rocker Project" \
@@ -32,10 +33,6 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
-
-## Use Debian unstable via pinning -- new style via APT::Default-Release
-RUN echo "deb http://http.debian.net/debian sid main" > /etc/apt/sources.list.d/debian-unstable.list \
-        && echo 'APT::Default-Release "testing";' > /etc/apt/apt.conf.d/default
 
 ENV R_BASE_VERSION 4.0.2
 
