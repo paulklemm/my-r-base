@@ -1,11 +1,7 @@
 FROM debian:buster
 
 # Credit for all this code goes to @eddelbuettel (https://github.com/rocker-org/rocker/blob/master/r-base/latest/Dockerfile)
-# I only removed the "Use Debian unstable via pinning" section
-LABEL org.label-schema.license="GPL-2.0" \
-      org.label-schema.vcs-url="https://github.com/rocker-org/r-base" \
-      org.label-schema.vendor="Rocker Project" \
-      maintainer="Dirk Eddelbuettel <edd@debian.org>"
+# I only removed the "Use Debian unstable via pinning" and label section
 
 ## Set a default user. Available via runtime flag `--user docker`
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
