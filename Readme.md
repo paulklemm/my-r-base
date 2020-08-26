@@ -1,4 +1,4 @@
-# This project is retired
+# This project is retired. See History
 
 # my-r-base
 
