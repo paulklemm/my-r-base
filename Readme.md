@@ -17,6 +17,6 @@ If there is an easier way of doing this, please let me know.
 ## History
 
 - *2020-08-26*
-  - Retired project. I've discovered that doing `rm -rf /etc/apt/apt.conf.d/default` is doing the trick for reverting the apt-get source to the debian default.
+  - Retired project. I've discovered that `rm -rf /etc/apt/apt.conf.d/default` is doing the trick for reverting the apt-get source to the debian default.
 - *2020-08-25*
   - Initial commit, started the project
