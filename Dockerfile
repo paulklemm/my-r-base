@@ -1,7 +1,7 @@
 FROM debian:buster
 
 # Credit for all this code goes to @eddelbuettel (https://github.com/rocker-org/rocker/blob/master/r-base/latest/Dockerfile)
-# I only removed the "Use Debian unstable via pinning" and label section
+# I only removed the unstable source at the end and label section
 
 ## Set a default user. Available via runtime flag `--user docker`
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
@@ -30,6 +30,10 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
+## Use Debian unstable via pinning -- new style via APT::Default-Release
+RUN echo "deb http://http.debian.net/debian sid main" > /etc/apt/sources.list.d/debian-unstable.list \
+        && echo 'APT::Default-Release "testing";' > /etc/apt/apt.conf.d/default
+
 ENV R_BASE_VERSION 4.0.2
 
 ## Now install R and littler, and create a link for littler in /usr/local/bin
@@ -51,6 +55,8 @@ RUN apt-get update \
 	&& ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r \
 	&& install.r docopt \
 	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+	# Custom: Remove the testing apt-get source
+	&& rm -rf /etc/apt/apt.conf.d/default
 
 CMD ["R"]

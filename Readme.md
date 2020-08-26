@@ -1,3 +1,5 @@
+# This project is retired
+
 # my-r-base
 
 This is a fork of r[ocker-org/rocker](https://github.com/rocker-org/rocker) [r-base](https://github.com/rocker-org/rocker/tree/master/r-base) but with a stable [debian](https://hub.docker.com/_/debian) release as base-image.
@@ -14,5 +16,7 @@ If there is an easier way of doing this, please let me know.
 
 ## History
 
+- *2020-08-26*
+  - Retired project. I've discovered that doing `rm -rf /etc/apt/apt.conf.d/default` is doing the trick for reverting the apt-get source to the debian default.
 - *2020-08-25*
   - Initial commit, started the project
